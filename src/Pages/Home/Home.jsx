@@ -5,6 +5,7 @@ import PopularProducts from "../../Components/Home/PopularProducts";
 import LatestExclusive from "../../Components/Home/LatestExclusive";
 import NewProducts from "../../Components/Home/NewProducts";
 import Collection from "../../Components/Home/Collection";
+import Support from "../../Components/Home/Support";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <LatestExclusive />
       <NewProducts />
       <Collection />
+      <Support />
     </div>
   );
 }
