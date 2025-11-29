@@ -7,6 +7,7 @@ import Home from "./Pages/Home/Home";
 import ShopNow from "./Pages/ShopNow/ShopNow";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
+import ProductDetails from "./Pages/ShopNow/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: "/shop-now", element: <ShopNow /> },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
+      { path: "/shop-now/:id", element: <ProductDetails /> },
     ],
   },
   {
