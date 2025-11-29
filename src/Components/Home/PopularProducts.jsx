@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { TbCategory } from "react-icons/tb";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import useData from "../../Hooks/useData";
 import SectionHeading from "../SectionHeading";
 import ProductCard from "./ProductCard";
 
 const PopularProducts = () => {
-  const { categorys, products } = useData();
-  const [categoryId, SetCategoryId] = useState(null);
+  const { products, categorys } = useData();
+  const [searchParams] = useSearchParams();
+
+  const initialCategoryId = Number(searchParams.get("categoryId")) || null;
+
+  const [categoryId, setCategoryId] = useState(initialCategoryId);
   const handleCategoryId = (id) => {
-    SetCategoryId(id);
+    setCategoryId(id);
   };
   const filterProduct = categoryId
     ? products.filter((p) => p.categoryId == categoryId)
@@ -60,7 +64,9 @@ const PopularProducts = () => {
       </div>
 
       <div className="flex justify-center">
-        <Link to="/shop-now">
+        <Link
+          to={categoryId ? `/shop-now?categoryId=${categoryId}` : "/shop-now"}
+        >
           <div className="flex cursor-pointer justify-center items-center bg-green-400  py-4 px-8 rounded-md w-full sm:w-auto text-white font-semibold gap-3 ">
             <p>View All Products</p>
             <TbCategory />
